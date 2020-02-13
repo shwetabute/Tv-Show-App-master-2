@@ -25,9 +25,15 @@ export class ShowDetailService {
       language: data.language,
       rating: data.rating.average,
       genres: data.genres,
-      summary: data.summary,
+      summary: this.replace(data.summary),
       image: data.image.medium,
       country: data.network.country.name
     }
+  }
+  private replace (html:string) {
+
+    var div = document.createElement("div");
+    div.innerHTML = html;
+    return( div.textContent || div.innerText || "");
   }
 }
